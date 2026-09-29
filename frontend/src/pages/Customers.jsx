@@ -23,7 +23,7 @@ export default function Customers() {
   const fetchCustomers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/customers', {
+      const res = await axios.get('https://biz-flow-beryl.vercel.app/api/customers', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCustomers(res.data || []);
@@ -41,7 +41,7 @@ export default function Customers() {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/customers', formData, {
+      await axios.post('https://biz-flow-beryl.vercel.app/api/customers', formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -68,7 +68,7 @@ export default function Customers() {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `http://localhost:5000/api/customers/${selectedCustomer._id}/redeem`,
+        `https://biz-flow-beryl.vercel.app/api/customers/${selectedCustomer._id}/redeem`,
         { points: pointsToRedeem },
         { headers: { Authorization: `Bearer ${token}` } }
       );

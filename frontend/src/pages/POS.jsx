@@ -33,8 +33,8 @@ export default function POS() {
   const fetchInventoryAndCustomers = async () => {
     try {
       const [prodRes, custRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/products', getAuthHeader()),
-        axios.get('http://localhost:5000/api/customers', getAuthHeader()),
+        axios.get('https://biz-flow-beryl.vercel.app/api/products', getAuthHeader()),
+        axios.get('https://biz-flow-beryl.vercel.app/api/customers', getAuthHeader()),
       ]);
       setProducts(prodRes.data || []);
       setCustomers(custRes.data || []);
@@ -114,7 +114,7 @@ export default function POS() {
         customerEmail: custObj ? custObj.email : '',
       };
 
-      const res = await axios.post('http://localhost:5000/api/pos/checkout', payload, getAuthHeader());
+      const res = await axios.post('https://biz-flow-beryl.vercel.app/api/pos/checkout', payload, getAuthHeader());
 
       setCompletedOrder(res.data.sale);
       setSuccessMsg('Sale recorded successfully!');

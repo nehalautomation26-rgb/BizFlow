@@ -22,7 +22,7 @@ export default function Subscription() {
       const token = localStorage.getItem('token');
 
       const res = await axios.post(
-        'http://localhost:5000/api/auth/subscribe',
+        'https://biz-flow-beryl.vercel.app/api/auth/subscribe',
         { plan: planName },
         { headers: { Authorization: `Bearer ${token}` } }
       );

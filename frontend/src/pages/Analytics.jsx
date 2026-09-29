@@ -13,7 +13,7 @@ export default function Analytics() {
   const fetchAnalyticsData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/analytics/overview', {
+      const res = await axios.get('https://biz-flow-beryl.vercel.app/api/analytics/overview', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOverview(res.data);

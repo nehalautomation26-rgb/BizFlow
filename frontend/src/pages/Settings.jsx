@@ -19,7 +19,7 @@ export default function Settings() {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.put(
-        'http://localhost:5000/api/auth/me',
+        'https://biz-flow-beryl.vercel.app/api/auth/me',
         { name, businessName },
         { headers: { Authorization: `Bearer ${token}` } }
       );

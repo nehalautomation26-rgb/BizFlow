@@ -29,7 +29,7 @@ export default function Inventory() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/products', getAuthHeader());
+      const res = await axios.get('https://biz-flow-beryl.vercel.app/api/products', getAuthHeader());
       setProducts(res.data);
       setError('');
     } catch (err) {
@@ -61,14 +61,14 @@ export default function Inventory() {
       if (editingId) {
         // Update product
         await axios.put(
-          `http://localhost:5000/api/products/${editingId}`,
+          `https://biz-flow-beryl.vercel.app/api/products/${editingId}`,
           formData,
           getAuthHeader()
         );
         setEditingId(null);
       } else {
         // Create product
-        await axios.post('http://localhost:5000/api/products', formData, getAuthHeader());
+        await axios.post('https://biz-flow-beryl.vercel.app/api/products', formData, getAuthHeader());
       }
 
       setFormData({ name: '', category: '', price: '', quantity: '' });
@@ -100,7 +100,7 @@ export default function Inventory() {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, getAuthHeader());
+      await axios.delete(`https://biz-flow-beryl.vercel.app/api/products/${id}`, getAuthHeader());
       fetchProducts();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to delete product');

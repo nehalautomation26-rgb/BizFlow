@@ -34,7 +34,7 @@ export default function Bookings() {
   const fetchBookings = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/bookings', getAuthHeader());
+      const res = await axios.get('https://biz-flow-beryl.vercel.app/api/bookings', getAuthHeader());
       setBookings(res.data);
       setError('');
     } catch (err) {
@@ -62,7 +62,7 @@ export default function Bookings() {
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/bookings', formData, getAuthHeader());
+      await axios.post('https://biz-flow-beryl.vercel.app/api/bookings', formData, getAuthHeader());
       setFormData({
         customerName: '',
         customerPhone: '',
@@ -81,7 +81,7 @@ export default function Bookings() {
   const handleStatusChange = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/bookings/${id}/status`,
+        `https://biz-flow-beryl.vercel.app/api/bookings/${id}/status`,
         { status: newStatus },
         getAuthHeader()
       );
@@ -95,7 +95,7 @@ export default function Bookings() {
     if (!window.confirm('Are you sure you want to delete this booking?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/bookings/${id}`, getAuthHeader());
+      await axios.delete(`https://biz-flow-beryl.vercel.app/api/bookings/${id}`, getAuthHeader());
       fetchBookings();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to delete booking');
